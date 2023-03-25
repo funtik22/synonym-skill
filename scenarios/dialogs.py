@@ -2,7 +2,6 @@ from dialogic import COMMANDS
 from dialogic.cascade import DialogTurn
 
 from dm import csc
-from scenarios.synonym_finder import make_synonym_response
 
 
 def is_single_pass(turn: DialogTurn) -> bool:
@@ -49,11 +48,11 @@ def total_exit(turn: DialogTurn):
     turn.commands.append(COMMANDS.EXIT)
 
 
-@csc.add_handler(priority=1)
-def find_synonym_fallback(turn: DialogTurn):
-    if not turn.text:
-        return
-    make_synonym_response(turn)
+##@csc.add_handler(priority=1)
+##def find_synonym_fallback(turn: DialogTurn):
+##    if not turn.text:
+##        return
+##    make_synonym_response(turn)
 
 
 @csc.add_handler(priority=10, intents=['what_word'])

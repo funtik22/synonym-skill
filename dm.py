@@ -9,12 +9,6 @@ from dialogic.nlu.matchers import W2VMatcher, make_matcher_with_regex, TextNorma
 
 csc = Cascade()
 
-
-ft = compress_fasttext.models.CompressedFastTextKeyedVectors.load(
-    'data/ft_freqprune_100K_20K_pq_100.bin'
-)
-
-
 class SmartDM(TurnDialogManager):
     def postprocess_response(self, response: Response, turn: DialogTurn):
         response.updated_user_object['prev'] = {
@@ -27,15 +21,6 @@ class SmartDM(TurnDialogManager):
     def load_intents(self, intents_file=None):
         with open(intents_file, 'r', encoding='utf-8') as f:
             self.intents = yaml.safe_load(f)
-
-        self.intent_matcher = make_matcher_with_regex(
-            base_matcher=W2VMatcher(
-                text_normalization=TextNormalization.FAST_LEMMATIZE,
-                w2v=ft,
-                threshold=0.7
-            ),
-            intents=self.intents,
-        )
 
 
 def make_dm() -> TurnDialogManager:
