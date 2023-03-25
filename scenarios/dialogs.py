@@ -17,10 +17,9 @@ def is_new_session(turn: DialogTurn):
     return turn.ctx.session_is_new() or not turn.text
 
 
-@csc.add_handler(priority=100, checker=is_single_pass)
-def single_pass(turn: DialogTurn):
-    make_synonym_response(turn)
-    turn.commands.append(COMMANDS.EXIT)
+#@csc.add_handler(priority=100, checker=is_single_pass)
+#def single_pass(turn: DialogTurn):
+#   turn.commands.append(COMMANDS.EXIT)
 
 
 @csc.add_handler(priority=10, regexp='(hello|hi|привет|здравствуй)')
@@ -65,10 +64,10 @@ def what_word(turn: DialogTurn):
         turn.response_text = 'Вы ещё не искали синонимы'
 
 
-@csc.add_handler(priority=20, intents=['synonyms_ellipsis'], stages=['word'])
-def synonyms_ellipsis(turn: DialogTurn):
-    word = turn.user_object.get('word')
-    make_synonym_response(turn, word=word)
+#@csc.add_handler(priority=20, intents=['synonyms_ellipsis'], stages=['word'])
+#def synonyms_ellipsis(turn: DialogTurn):
+#    word = turn.user_object.get('word')
+#    make_synonym_response(turn, word=word)
 
 
 @csc.add_handler(priority=10, intents=['repeat'])
