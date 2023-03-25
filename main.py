@@ -3,7 +3,7 @@ from dialogic.server.flask_server import FlaskServer
 from dialogic.storage.message_logging import MongoMessageLogger
 
 from dm import make_dm
-import scenarios  # noqывывывывa
+import scenarios  # noqывывывывasdasdasdasd
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
