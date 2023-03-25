@@ -17,4 +17,5 @@ jobs:
         runtime: 'python37-preview'
         memory: '128'
         entrypoint: 'main.handler'
-
+        environment: 'MONGODB_URI=${{ secrets.MONGODB_URI }}'
+        source: '.'
